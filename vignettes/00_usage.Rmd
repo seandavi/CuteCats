@@ -16,7 +16,7 @@ advanced usage.
 
 # Installing
 
-```{r}
+```{r eval=FALSE}
 BiocManager::install('seandavi/CuteCats')
 ```
 

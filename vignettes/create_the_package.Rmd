@@ -146,7 +146,6 @@ Note that this function requires two new packages, the `png` package and the
 `grid` package. We tell R that our package needs these two packages by adding
 the following to our `DESCRIPTION` file below the `License` line (see above).
 
-
 ```
 Imports: png, grid
 ```
@@ -167,7 +166,7 @@ dir.create('inst/images', recursive=TRUE)
 And to add our cat picture:
 
 ```{r eval=FALSE}
-download.file('abc', destfile='inst/images/hooper_kitten.png')
+download.file('https://github.com/seandavi/CuteCats/raw/main/inst/images/hooper_kitten.png', destfile='inst/images/hooper_kitten.png')
 ```
 
 ## Step 5: Document functions
@@ -226,8 +225,6 @@ hooper_kitten <- function() {
 }
 ```
 
-
-
 ## Step 6: Try it out
 
 The `devtools` package includes a nice function to quickly "load" the package
@@ -240,7 +237,42 @@ devtools::load_all()
 
 And try out the functions. 
 
-## Step 8-Infinity: Iterate and improve
+## Step 7: Add a license
+
+```{r eval=FALSE}
+usethis::use_mit_license()
+```
+
+## Step 8: Build a pkgdown site
+
+```{r eval=FALSE}
+BiocManager::install('pkgdown')
+```
+
+Then, build the site:
+
+```{r eval=FALSE}
+pkgdown::build_site()
+```
+
+The site will end up in the `docs` directory. We will use that information
+to tell GitHub where the website material is located.
+
+## Step 9: Add everything to git
+
+If you've cloned the package from git, no need to do this step. However, if 
+you created the package from scratch, you'll want to do this to add 
+version control to your package. 
+
+On the terminal command line, switch into your package directory and then do:
+
+```
+git init
+git add .
+git commit -m 'Working package'
+```
+
+## Step 10-Infinity: Iterate and improve
 
 
 
