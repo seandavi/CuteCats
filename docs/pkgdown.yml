@@ -4,5 +4,8 @@ pkgdown_sha: ~
 articles:
   00_usage: 00_usage.html
   create_the_package: create_the_package.html
-last_built: 2022-07-13T17:50Z
+last_built: 2022-07-13T17:55Z
+urls:
+  reference: https://seandavi.github.io/CuteCats/reference
+  article: https://seandavi.github.io/CuteCats/articles
 
