@@ -1,10 +1,17 @@
 Package: CuteCats
-Title: What the Package Does (One Line, Title Case)
+Title: Advanced CuteCates methods
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+    person("Sean", "Davis", , "seandavi@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-8991-6458"))
+Description: The CuteCats package has incredible functionality. There are
+    advanced machine learning and artificial methods for determining if a 
+    user is a cat lover or not. Note that we do not attempt to provide 
+    measures of uncertainty since there is really no uncertainty about 
+    whether a person is a cat lover or not. In addition, there are state-
+    of-the-art image manipulation methods that actually display the output
+    after manipulation. The image displays are also incredibly valuable and
+    have been shown to actually enhance mood of the user. 
 License: MIT + file LICENSE
 Imports: png, grid
 Encoding: UTF-8
