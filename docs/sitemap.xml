@@ -4,7 +4,16 @@
     <loc>/404.html</loc>
   </url>
   <url>
+    <loc>/LICENSE-text.html</loc>
+  </url>
+  <url>
+    <loc>/LICENSE.html</loc>
+  </url>
+  <url>
     <loc>/articles/00_usage.html</loc>
+  </url>
+  <url>
+    <loc>/articles/create_the_package.html</loc>
   </url>
   <url>
     <loc>/articles/cshl_tshirt_package.html</loc>
