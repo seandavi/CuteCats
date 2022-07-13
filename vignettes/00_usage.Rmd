@@ -1,0 +1,46 @@
+---
+title: "Advanced Usage of the CuteCats Package"
+author: "Sean Davis"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Advanced Usage of the CuteCats Package}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+# Background
+
+The `CuteCats` package is extremely complex and this vignette presents the 
+advanced usage.
+
+# Installing
+
+```{r}
+BiocManager::install('seandavi/CuteCats')
+```
+
+## Usage
+
+```{r}
+library(CuteCats)
+```
+
+## Do you love cats (I hope)?
+
+```{r}
+love_cats()
+```
+
+Or, if you are not cool, you can use the variant:
+
+```{r}
+love_cats(love=FALSE)
+```
+
+## What is the cutest cat at Cold Spring Harbor?
+
+```{r}
+hooper_kitten()
+```
+
