@@ -1,0 +1,246 @@
+---
+title: "Making the CuteCats package"
+author: "Sean Davis"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Making the CuteCats package}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+# Why an R package?
+
+Organizing code, data, and thoughts (via documentation and vignettes) for your
+own analysis does not necessarily require an R package. However, you may want
+to share your materials, analysis, data, and functions with your future self
+or others. Hadley Wickham envisions an R package 
+[as the easiest way to do so](ttp://adv-r.had.co.nz/Philosophy.html).
+
+R packages contain provenance (who wrote it, when, etc.), data, R code, 
+documentation, tests, and really almost any other files important to the 
+functionality of the package. Packages are installable, reusable, shareable,
+versioned, and extensible. 
+
+It is not about making a beautiful, perfect R package. The idea is about 
+creating a bare-minimum R package so that you don’t have to keep thinking 
+to yourself, “I really should just make an R package with these functions 
+so I don’t have to keep copy/pasting them.” It isn’t all about sharing
+sharing your code, although it is easy to do once you have an R package. It 
+is about saving yourself time and serving as an external brain for your
+code and analysis. 
+
+# What is an R package?
+
+The simplest R package is a directory with a file called `DESCRIPTION` (all
+caps, no suffix). In addition, a package usually has an `R` directory that
+contains R functions in files. Additional, optional folders and files serve 
+other purposes. A `data` folder allows for data of specific types
+of files (csv, rda). The `inst` directory will be added to the package when
+it is installed; this is a good place to add supplementary files that are
+needed for a package but that don't fit in the `data` folder. 
+
+The files in a cute little *PANDA* package might look like:
+
+```
+├── DESCRIPTION
+├── NAMESPACE
+├── R
+│   ├── cute_panda.R
+│   └── eucalyptus.R
+├── abc.Rproj
+├── data
+│   └── panda.csv
+└── inst
+    └── ext_images
+        ├── baby_panda.png
+        └── mommy_panda.png
+```
+
+# How do I create an R package?
+
+## Step 0: Install needed pacakges
+
+```{r eval=FALSE}
+BiocManager::install("devtools")
+BiocManager::install("roxygen2")
+```
+
+## Step 1: Create a skeleton R package
+
+The `devtools` package contains lots of helpers for R package development.
+The first function from that package we use is the `create` function:
+
+```{r eval=FALSE}
+devtools::create("CuteCats")
+```
+
+After executing, the `CuteCats` directory will contain a few files new files:
+
+```
+├── CuteCats.Rproj 
+├── DESCRIPTION
+├── NAMESPACE
+└── R
+```
+
+## Step 2: Edit the DESCRIPTION file
+
+The `DESCRIPTION` file looks something like:
+
+```
+Package: CuteCats
+Title: What the Package Does (One Line, Title Case)
+Version: 0.0.0.9000
+Authors@R: 
+    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: What the package does (one paragraph).
+License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
+    license
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.0
+```
+
+Edit this file according to the short documentation. It is just a text file,
+so edit it in RStudio works just fine.
+
+## Step 3: Add functions
+
+We can include functions in our package by writing them and then saving them
+in the `R` directory. A file can contain one or more functions. The names
+of the files don't matter much, but the file must end with `.R`. 
+
+For example, open a new R script in RStudio and create the `love_cats()`.
+
+```{r}
+love_cats <- function(love=TRUE){
+    if(love==TRUE){
+        print("I love cats!")
+        return(TRUE)
+    }
+    else {
+        print("I am not a cool person.")
+        return(FALSE)
+    }
+}
+```
+
+For our second function, let's take advantage of the presence of the cute
+kitten that graced us with its presence during the CSHL course in 2022. This
+function is going to display a photo of the Hooper House kitten. Create a 
+new R script file in RStudio and add the `hooper_kitten` to it.
+
+```{r}
+hooper_kitten <- function() {
+    file_loc = system.file('images/hooper_kitten.png', package='CuteCats')
+    pic = png::readPNG(file_loc)
+    grid::grid.raster(img)
+}
+```
+
+Save the function as `hooper.R` in the `R` directory.
+
+Note that this function requires two new packages, the `png` package and the 
+`grid` package. We tell R that our package needs these two packages by adding
+the following to our `DESCRIPTION` file below the `License` line (see above).
+
+
+```
+Imports: png, grid
+```
+
+By doing so, when people install our R package, the `png` and `grid` packages
+will also be installed if needed. 
+
+## Step 4: Add data and other files
+
+Lets add our cat picture to our package. We will create a new directory
+in our package called `inst/images` and put our cat picture in there,
+calling it `hooper_kitten.png`.
+
+```{r eval=FALSE}
+dir.create('inst/images', recursive=TRUE)
+```
+
+And to add our cat picture:
+
+```{r eval=FALSE}
+download.file('abc', destfile='inst/images/hooper_kitten.png')
+```
+
+## Step 5: Document functions
+
+Adding documentation to functions is really important for you, your future
+self, and anyone you share your functions and package with. Doing so looks
+intimidating at first, but once you do it a couple of times, it is 
+pretty straightforward. The approach most people use these days is to document
+functions using the [roxygen package](https://cran.r-project.org/web/packages/roxygen2/vignettes/roxygen2.html). 
+
+Edit your `love_cats` function file to look like:
+
+```{r eval=FALSE}
+#' Do you love cats?
+#'
+#' This function allows you to express your love of cats.
+#' 
+#' @param love Do you love cats? Defaults to TRUE.
+#' @keywords cats
+#' @examples
+#' love_cats()
+#' @export
+love_cats <- function(love=TRUE){
+    if(love==TRUE){
+        print("I love cats!")
+        return(TRUE)
+    }
+    else {
+        print("I am not a cool person.")
+        return(FALSE)
+    }
+}
+
+```
+
+Save this file again. Now, to get the documentation from the comments in 
+the code above to an actual R documentation file, run:
+
+```{r eval=FALSE}
+devtools::document()
+```
+
+Do the same for the `hooper_kitten` function:
+
+```{r eval=FALSE}
+#' Hooper Kitten picture
+#' 
+#' Displays the cutest kitten at Cold Spring Harbor
+#' @examples
+#' hooper_kitten()
+#' @export
+hooper_kitten <- function() {
+    file_loc = system.file('images/hooper_kitten.png', package='CuteCats')
+    pic = png::readPNG(file_loc)
+    grid::grid.raster(img)
+}
+```
+
+
+
+## Step 6: Try it out
+
+The `devtools` package includes a nice function to quickly "load" the package
+without having to install it, making it convenient and fast to make changes
+to the package and test them out. 
+
+```{r eval=FALSE}
+devtools::load_all()
+```
+
+And try out the functions. 
+
+## Step 8-Infinity: Iterate and improve
+
+
+
