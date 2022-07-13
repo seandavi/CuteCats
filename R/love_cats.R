@@ -9,11 +9,11 @@
 #' @export
 love_cats <- function(love=TRUE){
     if(love==TRUE){
-        print("I love cats!")
+        message("I love cats!")
         return(TRUE)
     }
     else {
-        print("I am not a cool person.")
+        message("I am not a cool person.")
         return(FALSE)
     }
 }
