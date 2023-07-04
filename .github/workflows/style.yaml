@@ -55,7 +55,7 @@ jobs:
             ${{ runner.os }}-
 
       - name: Style
-        run: styler::style_pkg()
+        run: styler::style_pkg(indent=4)
         shell: Rscript {0}
 
       - name: Commit and push changes
