@@ -1,5 +1,5 @@
 url: https://seandavi.github.io/CuteCats/
 template:
   bootstrap: 5
-  theme: slate
+  theme: vim-dark
 
