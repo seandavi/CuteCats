@@ -115,12 +115,11 @@ of the files don't matter much, but the file must end with `.R`.
 For example, open a new R script in RStudio and create the `love_cats()`.
 
 ```{r}
-love_cats <- function(love=TRUE){
-    if(love==TRUE){
+love_cats <- function(love = TRUE) {
+    if (love == TRUE) {
         print("I love cats!")
         return(TRUE)
-    }
-    else {
+    } else {
         print("I am not a cool person.")
         return(FALSE)
     }
@@ -134,8 +133,8 @@ new R script file in RStudio and add the `hooper_kitten` to it.
 
 ```{r}
 hooper_kitten <- function() {
-    file_loc = system.file('images/hooper_kitten.png', package='CuteCats')
-    pic = png::readPNG(file_loc)
+    file_loc <- system.file("images/hooper_kitten.png", package = "CuteCats")
+    pic <- png::readPNG(file_loc)
     grid::grid.raster(pic)
 }
 ```
@@ -160,13 +159,13 @@ in our package called `inst/images` and put our cat picture in there,
 calling it `hooper_kitten.png`.
 
 ```{r eval=FALSE}
-dir.create('inst/images', recursive=TRUE)
+dir.create("inst/images", recursive = TRUE)
 ```
 
 And to add our cat picture:
 
 ```{r eval=FALSE}
-download.file('https://github.com/seandavi/CuteCats/raw/main/inst/images/hooper_kitten.png', destfile='inst/images/hooper_kitten.png')
+download.file("https://github.com/seandavi/CuteCats/raw/main/inst/images/hooper_kitten.png", destfile = "inst/images/hooper_kitten.png")
 ```
 
 ## Step 5: Document functions
@@ -183,23 +182,21 @@ Edit your `love_cats` function file to look like:
 #' Do you love cats?
 #'
 #' This function allows you to express your love of cats.
-#' 
+#'
 #' @param love Do you love cats? Defaults to TRUE.
 #' @keywords cats
 #' @examples
 #' love_cats()
 #' @export
-love_cats <- function(love=TRUE){
-    if(love==TRUE){
+love_cats <- function(love = TRUE) {
+    if (love == TRUE) {
         print("I love cats!")
         return(TRUE)
-    }
-    else {
+    } else {
         print("I am not a cool person.")
         return(FALSE)
     }
 }
-
 ```
 
 Save this file again. Now, to get the documentation from the comments in 
@@ -213,14 +210,14 @@ Do the same for the `hooper_kitten` function:
 
 ```{r eval=FALSE}
 #' Hooper Kitten picture
-#' 
+#'
 #' Displays the cutest kitten at Cold Spring Harbor
 #' @examples
 #' hooper_kitten()
 #' @export
 hooper_kitten <- function() {
-    file_loc = system.file('images/hooper_kitten.png', package='CuteCats')
-    pic = png::readPNG(file_loc)
+    file_loc <- system.file("images/hooper_kitten.png", package = "CuteCats")
+    pic <- png::readPNG(file_loc)
     grid::grid.raster(img)
 }
 ```
@@ -246,7 +243,7 @@ usethis::use_mit_license()
 ## Step 8: Build a pkgdown site
 
 ```{r eval=FALSE}
-BiocManager::install('pkgdown')
+BiocManager::install("pkgdown")
 ```
 
 Then, build the site:
