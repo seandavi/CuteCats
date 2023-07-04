@@ -1,6 +1,6 @@
 Package: CuteCats
 Title: Advanced CuteCates methods
-Version: 0.0.0.9000
+Version: 1.0.0
 Authors@R: 
     person("Sean", "Davis", , "seandavi@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-8991-6458"))
