@@ -175,12 +175,11 @@ must end with <code>.R</code>.</p>
 <p>For example, open a new R script in RStudio and create the
 <code><a href="../reference/love_cats.html">love_cats()</a></code>.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">love_cats</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">love</span><span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">{</span></span>
-<span>    <span class="kw">if</span><span class="op">(</span><span class="va">love</span><span class="op">==</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">{</span></span>
+<code class="sourceCode R"><span><span class="va">love_cats</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">love</span> <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="kw">if</span> <span class="op">(</span><span class="va">love</span> <span class="op">==</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">{</span></span>
 <span>        <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="st">"I love cats!"</span><span class="op">)</span></span>
 <span>        <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span>    <span class="op">}</span></span>
-<span>    <span class="kw">else</span> <span class="op">{</span></span>
+<span>    <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
 <span>        <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="st">"I am not a cool person."</span><span class="op">)</span></span>
 <span>        <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span></span>
 <span>    <span class="op">}</span></span>
@@ -192,8 +191,8 @@ kitten. Create a new R script file in RStudio and add the
 <code>hooper_kitten</code> to it.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">hooper_kitten</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="va">file_loc</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">'images/hooper_kitten.png'</span>, package<span class="op">=</span><span class="st">'CuteCats'</span><span class="op">)</span></span>
-<span>    <span class="va">pic</span> <span class="op">=</span> <span class="fu">png</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/png/man/readPNG.html" class="external-link">readPNG</a></span><span class="op">(</span><span class="va">file_loc</span><span class="op">)</span></span>
+<span>    <span class="va">file_loc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"images/hooper_kitten.png"</span>, package <span class="op">=</span> <span class="st">"CuteCats"</span><span class="op">)</span></span>
+<span>    <span class="va">pic</span> <span class="op">&lt;-</span> <span class="fu">png</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/png/man/readPNG.html" class="external-link">readPNG</a></span><span class="op">(</span><span class="va">file_loc</span><span class="op">)</span></span>
 <span>    <span class="fu">grid</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/grid/grid.raster.html" class="external-link">grid.raster</a></span><span class="op">(</span><span class="va">pic</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 <p>Save the function as <code>hooper.R</code> in the <code>R</code>
@@ -214,10 +213,10 @@ and <code>grid</code> packages will also be installed if needed.</p>
 directory in our package called <code>inst/images</code> and put our cat
 picture in there, calling it <code>hooper_kitten.png</code>.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/files2.html" class="external-link">dir.create</a></span><span class="op">(</span><span class="st">'inst/images'</span>, recursive<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/files2.html" class="external-link">dir.create</a></span><span class="op">(</span><span class="st">"inst/images"</span>, recursive <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p>And to add our cat picture:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/download.file.html" class="external-link">download.file</a></span><span class="op">(</span><span class="st">'https://github.com/seandavi/CuteCats/raw/main/inst/images/hooper_kitten.png'</span>, destfile<span class="op">=</span><span class="st">'inst/images/hooper_kitten.png'</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/download.file.html" class="external-link">download.file</a></span><span class="op">(</span><span class="st">"https://github.com/seandavi/CuteCats/raw/main/inst/images/hooper_kitten.png"</span>, destfile <span class="op">=</span> <span class="st">"inst/images/hooper_kitten.png"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="step-5-document-functions">Step 5: Document functions<a class="anchor" aria-label="anchor" href="#step-5-document-functions"></a>
@@ -233,18 +232,17 @@ package</a>.</p>
 <code class="sourceCode R"><span><span class="co">#' Do you love cats?</span></span>
 <span><span class="co">#'</span></span>
 <span><span class="co">#' This function allows you to express your love of cats.</span></span>
-<span><span class="co">#' </span></span>
+<span><span class="co">#'</span></span>
 <span><span class="co">#' @param love Do you love cats? Defaults to TRUE.</span></span>
 <span><span class="co">#' @keywords cats</span></span>
 <span><span class="co">#' @examples</span></span>
 <span><span class="co">#' love_cats()</span></span>
 <span><span class="co">#' @export</span></span>
-<span><span class="va">love_cats</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">love</span><span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">{</span></span>
-<span>    <span class="kw">if</span><span class="op">(</span><span class="va">love</span><span class="op">==</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">{</span></span>
+<span><span class="va">love_cats</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">love</span> <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="kw">if</span> <span class="op">(</span><span class="va">love</span> <span class="op">==</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">{</span></span>
 <span>        <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="st">"I love cats!"</span><span class="op">)</span></span>
 <span>        <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span>    <span class="op">}</span></span>
-<span>    <span class="kw">else</span> <span class="op">{</span></span>
+<span>    <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
 <span>        <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="st">"I am not a cool person."</span><span class="op">)</span></span>
 <span>        <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span></span>
 <span>    <span class="op">}</span></span>
@@ -256,14 +254,14 @@ in the code above to an actual R documentation file, run:</p>
 <p>Do the same for the <code>hooper_kitten</code> function:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#' Hooper Kitten picture</span></span>
-<span><span class="co">#' </span></span>
+<span><span class="co">#'</span></span>
 <span><span class="co">#' Displays the cutest kitten at Cold Spring Harbor</span></span>
 <span><span class="co">#' @examples</span></span>
 <span><span class="co">#' hooper_kitten()</span></span>
 <span><span class="co">#' @export</span></span>
 <span><span class="va">hooper_kitten</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="va">file_loc</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">'images/hooper_kitten.png'</span>, package<span class="op">=</span><span class="st">'CuteCats'</span><span class="op">)</span></span>
-<span>    <span class="va">pic</span> <span class="op">=</span> <span class="fu">png</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/png/man/readPNG.html" class="external-link">readPNG</a></span><span class="op">(</span><span class="va">file_loc</span><span class="op">)</span></span>
+<span>    <span class="va">file_loc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"images/hooper_kitten.png"</span>, package <span class="op">=</span> <span class="st">"CuteCats"</span><span class="op">)</span></span>
+<span>    <span class="va">pic</span> <span class="op">&lt;-</span> <span class="fu">png</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/png/man/readPNG.html" class="external-link">readPNG</a></span><span class="op">(</span><span class="va">file_loc</span><span class="op">)</span></span>
 <span>    <span class="fu">grid</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/grid/grid.raster.html" class="external-link">grid.raster</a></span><span class="op">(</span><span class="va">img</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 </div>
@@ -287,7 +285,7 @@ and fast to make changes to the package and test them out.</p>
 <h3 id="step-8-build-a-pkgdown-site">Step 8: Build a pkgdown site<a class="anchor" aria-label="anchor" href="#step-8-build-a-pkgdown-site"></a>
 </h3>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu">install</span><span class="op">(</span><span class="st">'pkgdown'</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu">install</span><span class="op">(</span><span class="st">"pkgdown"</span><span class="op">)</span></span></code></pre></div>
 <p>Then, build the site:</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">pkgdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgdown.r-lib.org/reference/build_site.html" class="external-link">build_site</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
