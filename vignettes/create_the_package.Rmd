@@ -136,7 +136,7 @@ new R script file in RStudio and add the `hooper_kitten` to it.
 hooper_kitten <- function() {
     file_loc = system.file('images/hooper_kitten.png', package='CuteCats')
     pic = png::readPNG(file_loc)
-    grid::grid.raster(img)
+    grid::grid.raster(pic)
 }
 ```
 
