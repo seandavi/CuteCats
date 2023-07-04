@@ -17,7 +17,7 @@ advanced usage.
 # Installing
 
 ```{r eval=FALSE}
-BiocManager::install('seandavi/CuteCats')
+BiocManager::install("seandavi/CuteCats")
 ```
 
 ## Usage
@@ -35,7 +35,7 @@ love_cats()
 Or, if you are not cool, you can use the variant:
 
 ```{r}
-love_cats(love=FALSE)
+love_cats(love = FALSE)
 ```
 
 ## What is the cutest cat at Cold Spring Harbor?
